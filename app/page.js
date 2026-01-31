@@ -29,7 +29,7 @@ const page = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-10 text-sm">
               {[
                 { title: "Up to 80%", desc: "Performance Reward" },
-                { title: "Up to $100k", desc: "Simulated Accounts" },
+                { title: "Up to $200k", desc: "Simulated Accounts" },
                 { title: "24 Hours", desc: "Guaranteed Reward" },
                 { title: "60 days", desc: "in Challenge Phase" },
               ].map((item, i) => (

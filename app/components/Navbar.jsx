@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -29,9 +30,17 @@ export default function Navbar() {
 
         {/* Desktop Right */}
         <div className="hidden md:flex items-center gap-4">
-          <Link href="/login" className="text-sm text-gray-300 hover:text-white">
-            Login
-          </Link>
+
+        <SignedOut>
+          <SignInButton />
+          <SignUpButton />
+
+        </SignedOut>
+
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
+
           <Link
             href="/challanges"
             className="bg-white text-black px-5 py-2 rounded-full text-sm font-medium hover:bg-gray-200 transition"
@@ -83,13 +92,22 @@ export default function Navbar() {
             transition={{ duration: 0.25, ease: "easeOut" }}
             className="md:hidden absolute top-20 w-[90%] bg-indigo-800 rounded-2xl p-6 text-white"
           >
-            <ul className="flex flex-col gap-4 text-gray-300">
-              <li><Link href="/challanges" onClick={() => setOpen(false)}>Challenges</Link></li>
-              <li><Link href="/faq" onClick={() => setOpen(false)}>FAQ</Link></li>
-              <li><Link href="/rules" onClick={() => setOpen(false)}>Rules</Link></li>
-              <li><Link href="/login" onClick={() => setOpen(false)}>Login</Link></li>
-              <li><Link href="/us" onClick={() => setOpen(false)}>Why us?</Link></li>
-              <li>
+            <div className="flex flex-col gap-4 text-gray-300">
+              <Link href="/challanges" onClick={() => setOpen(false)}>Challenges</Link>
+            <Link href="/faq" onClick={() => setOpen(false)}>FAQ</Link>
+              <Link href="/rules" onClick={() => setOpen(false)}>Rules</Link>
+                   
+        <SignedOut>
+          <SignInButton />
+          <SignUpButton />
+           
+        </SignedOut>
+
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
+              <Link href="/us" onClick={() => setOpen(false)}>Why us?</Link>
+              
                 <Link
                   href="/challanges"
                   onClick={() => setOpen(false)}
@@ -97,8 +115,8 @@ export default function Navbar() {
                 >
                   Challenges
                 </Link>
-              </li>
-            </ul>
+              
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

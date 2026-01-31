@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Providers from "./providers.jsx";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,16 +14,14 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "EkvatorProp",
-  description: "Ekuator prop company",
+  description: "Ekvator prop",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
